@@ -1,24 +1,32 @@
 import React from 'react';
-import styles from './BestSellerModals.module.css'; // Import the CSS module
+import styles from './bestSellerModals.module.css';
 
 const BestSellerModals = ({ isOpen, onClose, product, modalPosition }) => {
-  if (!isOpen) return null; // If modal is closed, do not render it
+  if (!isOpen) return null;
 
   return (
-    <div className={styles.modalOverlay} onClick={onClose}>
-      <div
-        className={styles.modalContent}
-        onClick={(e) => e.stopPropagation()} // Prevent modal content click from closing the modal
-        style={{
-          top: modalPosition.top,
-          left: modalPosition.left,
-        }} // Position dynamically based on the button's coordinates
-      >
-        <button className={styles.closeBtn} onClick={onClose}>X</button>
-        <img src={product.image} alt={product.name} className={styles.modalImage} />
-        <h2 className={styles.modalTitle}>{product.name}</h2>
-        <p className={styles.modalDescription}>{product.details}</p>
-        <p className={styles.modalPrice}>₱{product.price}</p>
+    <div
+      className={styles['modal-container']}
+      style={{
+        '--modal-top': `${modalPosition.top - 10}px`, // Adjust to position above the button
+        '--modal-left': `${modalPosition.left - 10}px`, // Adjust to position to the left of the button
+      }}
+    >
+      <div className={styles['modal-header']}>
+        <h2>{product.name}</h2>
+        <button className={styles['close-button']} onClick={onClose}>
+          &times;
+        </button>
+      </div>
+      <div className={styles['modal-body']}>
+        <img src={product.image} alt={product.name} />
+        <p>{product.description}</p>
+        <p>Price: ₱{product.price}</p>
+      </div>
+      <div className={styles['modal-footer']}>
+        <button className={styles['close-button']} onClick={onClose}>
+          Close
+        </button>
       </div>
     </div>
   );

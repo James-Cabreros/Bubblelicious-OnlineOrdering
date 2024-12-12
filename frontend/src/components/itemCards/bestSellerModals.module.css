@@ -1,70 +1,74 @@
-/* Modal Overlay */
-.modalOverlay {
-    position: fixed;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background: rgba(0, 0, 0, 0.3); /* Darkened background */
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    z-index: 999;
-  }
-  
-  /* Modal Content */
-  .modalContent {
-    background: white;
-    padding: 20px;
-    border-radius: 12px; /* Rounded corners for a clean look */
-    width: 320px;
-    max-width: 100%;
-    text-align: center;
-    position: absolute; /* Absolute position to float over content */
-    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2); /* Soft shadow */
-    transition: top 0.3s ease, left 0.3s ease;
-  }
-  
-  /* Close Button */
-  .closeBtn {
-    position: absolute;
-    top: 10px;
-    right: 10px;
-    border: none;
-    background: none;
-    font-size: 1.5rem;
-    color: #333;
-    cursor: pointer;
-  }
-  
-  /* Modal Image */
-  .modalImage {
-    width: 100%;
-    height: 180px;
-    object-fit: cover;
-    border-radius: 8px;
-    margin-bottom: 15px;
-  }
-  
-  /* Modal Title */
-  .modalTitle {
-    font-size: 1.6rem;
-    font-weight: bold;
-    color: #333;
-    margin-bottom: 10px;
-  }
-  
-  /* Modal Description */
-  .modalDescription {
-    font-size: 1rem;
-    color: #555;
-    margin-bottom: 15px;
-  }
-  
-  /* Modal Price */
-  .modalPrice {
-    font-size: 1.2rem;
-    font-weight: bold;
-    color: #333;
-  }
-  
+/* Modal Container */
+.modal-container {
+  position: absolute;
+  top: var(--modal-top, 0); /* Use CSS variables for dynamic positioning */
+  left: var(--modal-left, 0); /* Use CSS variables for dynamic positioning */
+  background-color: white;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+  padding: 20px;
+  z-index: 1000; /* Ensure the modal is above other elements */
+  width: 300px; /* Adjust width as needed */
+}
+
+/* Modal Header */
+.modal-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1px solid #ddd;
+  padding-bottom: 10px;
+  margin-bottom: 10px;
+}
+
+.modal-header h2 {
+  font-size: 1.5rem;
+  color: #333;
+  margin: 0;
+}
+
+.modal-header .close-button {
+  background: none;
+  border: none;
+  font-size: 1.5rem;
+  cursor: pointer;
+  color: #333;
+}
+
+/* Modal Body */
+.modal-body {
+  font-size: 1rem;
+  color: #555;
+}
+
+.modal-body img {
+  width: 100%;
+  height: auto;
+  border-radius: 8px;
+  margin-bottom: 10px;
+}
+
+/* Modal Footer */
+.modal-footer {
+  display: flex;
+  justify-content: flex-end;
+  padding-top: 10px;
+  border-top: 1px solid #ddd;
+  margin-top: 10px;
+}
+
+.modal-footer .close-button {
+  background-color: #28a745;
+  color: white;
+  border: none;
+  padding: 8px 15px;
+  font-size: 0.9rem;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.modal-footer .close-button:hover {
+  background-color: #218838;
+}
