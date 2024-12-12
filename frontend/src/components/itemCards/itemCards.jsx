@@ -1,7 +1,8 @@
-import React, { useState, useEffect } from 'react'; // Import useEffect here
+import React, { useState, useEffect } from 'react';
 import axios from 'axios';
-import BestSellerCards from '../itemCards/bestSellerCards'; // Import the card component
+import BestSellerCards from '../itemCards/bestSellerCards';
 import BestSellerModals from '../itemCards/bestSellerModals';
+import styles from './ItemCards.module.css'; // Import your CSS module
 
 const ItemCards = () => {
   const [bestSellers, setBestSellers] = useState([]);
@@ -24,13 +25,12 @@ const ItemCards = () => {
     };
 
     fetchBestSellers();
-  }, []); // Empty dependency array means this effect runs once when the component mounts
+  }, []);
 
   const openModal = (product, event) => {
     setSelectedProduct(product);
     setIsModalOpen(true);
 
-    // Calculate the position of the modal based on the button click
     const buttonRect = event.target.getBoundingClientRect();
     setModalPosition({
       top: buttonRect.top + window.scrollY,
@@ -43,15 +43,15 @@ const ItemCards = () => {
   };
 
   return (
-    <div className="item-cards-container">
-      <div className="cardsWrapper">
+    <div className={styles['item-cards-container']}>
+      <div className={styles['cardsWrapper']}>
         {bestSellers.map((item) => (
           <BestSellerCards
             key={item._id}
             image={item.image}
             name={item.name}
             price={item.price}
-            onDetailsClick={(e) => openModal(item, e)} // Pass the click event to get button position
+            onDetailsClick={(e) => openModal(item, e)}
           />
         ))}
       </div>

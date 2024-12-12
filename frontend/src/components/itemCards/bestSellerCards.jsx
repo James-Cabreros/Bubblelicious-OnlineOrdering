@@ -12,6 +12,6 @@ const BestSellerCards = ({ image, name, price, onDetailsClick }) => {
       </div>
     </div>
   );
-}; 
+};
 
 export default BestSellerCards;
