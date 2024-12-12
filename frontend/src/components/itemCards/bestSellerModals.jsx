@@ -4,12 +4,18 @@ import styles from './bestSellerModals.module.css';
 const BestSellerModals = ({ isOpen, onClose, product, modalPosition }) => {
   if (!isOpen) return null;
 
+  const { top, left, windowWidth } = modalPosition;
+  const modalWidth = 300; // Modal width
+  const isCloseToRightEdge = left + modalWidth > windowWidth;
+  const translateX = isCloseToRightEdge ? '-100%' : '0'; // Shift left if near the right edge
+
   return (
     <div
       className={styles['modal-container']}
       style={{
-        '--modal-top': `${modalPosition.top - 10}px`, // Adjust to position above the button
-        '--modal-left': `${modalPosition.left - 10}px`, // Adjust to position to the left of the button
+        '--modal-top': `${top - 400}px`, // Position above the button
+        '--modal-left': `${left}px`, // Start from button position
+        '--modal-translate-x': translateX, // Shift left if needed
       }}
     >
       <div className={styles['modal-header']}>
@@ -20,13 +26,13 @@ const BestSellerModals = ({ isOpen, onClose, product, modalPosition }) => {
       </div>
       <div className={styles['modal-body']}>
         <img src={product.image} alt={product.name} />
-        <p>{product.description}</p>
-        <p>Price: ₱{product.price}</p>
-      </div>
-      <div className={styles['modal-footer']}>
-        <button className={styles['close-button']} onClick={onClose}>
-          Close
-        </button>
+        <p>{product.details}</p>
+        <div className={styles['price-close-container']}>
+          <p>Price: ₱{product.price}</p>
+          <button className={styles['close-button']} onClick={onClose}>
+            Close
+          </button>
+        </div>
       </div>
     </div>
   );

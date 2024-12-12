@@ -1,1 +1,66 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600&display=swap');
+
+.footer {
+  background-color: #333;
+  color: #fff;
+  padding: 0px;
+  text-align: center;
+}
+
+.container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.section {
+  flex: 1;
+  min-width: 200px;
+  margin: 20px;
+
+}
+
+.section h3 {
+  font-size: 1.5rem;
+  font-weight: 700;
+  margin-bottom: 10px;
+}
+
+.section h2 {
+  font-size: 2rem;
+  font-weight: 800;
+  margin-bottom: 50px;
+}
+
+.section p, .section ul {
+  font-size: 1rem;
+  margin: 5px 0;
+}
+
+.section ul {
+  list-style: none;
+  padding: 0;
+}
+
+.section ul li {
+  margin: 5px 0;
+}
+
+
+
+.logoText {
+  display: flex;
+  align-items: center;
+  font-size: 2rem;
+  font-weight: 800;
+}
+
+.logoGreen {
+  color: #92C034; /* Green color */
+}
+
+.logoOrange {
+  color: #EF9106; /* Orange color */
+}

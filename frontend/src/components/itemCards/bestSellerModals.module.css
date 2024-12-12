@@ -1,15 +1,18 @@
 /* Modal Container */
 .modal-container {
   position: absolute;
-  top: var(--modal-top, 0); /* Use CSS variables for dynamic positioning */
-  left: var(--modal-left, 0); /* Use CSS variables for dynamic positioning */
+  top: var(--modal-top, 0); /* Dynamic vertical positioning */
+  left: var(--modal-left, 0); /* Dynamic horizontal positioning */
+  transform: translateX(var(--modal-translate-x, 0)); /* Adjust based on viewport edge */
   background-color: white;
   border: 1px solid #ddd;
   border-radius: 8px;
   box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
   padding: 20px;
   z-index: 1000; /* Ensure the modal is above other elements */
-  width: 300px; /* Adjust width as needed */
+  width: 300px;
+  max-width: 90%; /* Ensure modal fits smaller screens */
+  transition: transform 0.3s ease;
 }
 
 /* Modal Header */
@@ -49,16 +52,18 @@
   margin-bottom: 10px;
 }
 
-/* Modal Footer */
-.modal-footer {
+.price-close-container {
   display: flex;
-  justify-content: flex-end;
-  padding-top: 10px;
-  border-top: 1px solid #ddd;
+  justify-content: space-between;
+  align-items: center;
   margin-top: 10px;
 }
 
-.modal-footer .close-button {
+.price-close-container p {
+  margin: 0;
+}
+
+.price-close-container .close-button {
   background-color: #28a745;
   color: white;
   border: none;
@@ -69,6 +74,6 @@
   transition: background-color 0.3s ease;
 }
 
-.modal-footer .close-button:hover {
+.price-close-container .close-button:hover {
   background-color: #218838;
 }

@@ -1,0 +1,50 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600&display=swap');
+
+.section {
+  background-color: #92C034; /* Green background color */
+  color: #fff; /* White text color */
+  padding: 10px;
+  text-align: center;
+  font-family: 'Poppins', sans-serif;
+  border-radius: 0px;
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+  margin: 0px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap; /* Ensure responsiveness */
+}
+
+.section p {
+  margin: 10px;
+  font-size: 1rem;
+  text-align: left;
+  flex: 1; /* Allow paragraphs to take equal space */
+  min-width: 200px; /* Ensure minimum width for responsiveness */
+}
+
+.section a {
+  text-decoration: none;
+  font-weight: 600;
+}
+
+.section a:hover {
+  text-decoration: underline;
+}
+
+.copyRight {
+  margin-top: 20px;
+  font-size: 0.9rem;
+}
+
+/* Media Query for smaller screens */
+@media (max-width: 768px) {
+  .section {
+    flex-direction: column; /* Stack items vertically on smaller screens */
+  }
+
+  .section p {
+    text-align: center; /* Center text on smaller screens */
+    min-width: 100%; /* Ensure full width for paragraphs */
+  }
+}

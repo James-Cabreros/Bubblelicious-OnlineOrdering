@@ -8,7 +8,7 @@ const ItemCards = () => {
   const [bestSellers, setBestSellers] = useState([]);
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [selectedProduct, setSelectedProduct] = useState(null);
-  const [modalPosition, setModalPosition] = useState({ top: 0, left: 0 });
+  const [modalPosition, setModalPosition] = useState({ top: 0, left: 0, windowWidth: 0 });
 
   useEffect(() => {
     const fetchBestSellers = async () => {
@@ -35,6 +35,7 @@ const ItemCards = () => {
     setModalPosition({
       top: buttonRect.top + window.scrollY,
       left: buttonRect.left + window.scrollX,
+      windowWidth: window.innerWidth, // Capture viewport width for responsive positioning
     });
   };
 
