@@ -1,0 +1,69 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap');
+/* Header.module.css */
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 20px;
+  background-color: #f8f8f8; /* Light background */
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+  font-family: 'Poppins', sans-serif;
+  font-size: 36px; /* Increased size for more emphasis */
+  font-weight: 800; /* Boldest font weight for strong visibility */
+  text-decoration: none;
+}
+
+.logo span:first-child {
+  color: #EF9106; /* Orange */
+}
+
+.logo span:last-child {
+  color: #92C034; /* Green */
+}
+
+.icons {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+.icon {
+  font-size: 24px;
+  color: #333; /* Default color for icons */
+  transition: color 0.3s ease;
+}
+
+.icon:hover {
+  color: #EF9106; /* Change to orange on hover */
+}
+
+.login {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  cursor: pointer;
+  transition: color 0.3s ease;
+  text-decoration: none;
+}
+
+
+.login span {
+  font-size: 16px;
+  color: #333; /* Default color for text */
+  text-decoration: none; /* Remove underline by default */
+  transition: color 0.3s ease, text-decoration 0.3s ease;
+}
+
+.login:hover span {
+  color: #EF9106; /* Hover color for text */
+  text-decoration: underline; /* Underline on hover */
+}
+
+.login:hover .icon {
+  color: #EF9106; /* Hover color for icon */
+}

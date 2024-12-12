@@ -1,0 +1,126 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600&display=swap');
+
+.home-container {
+  display: flex;
+  justify-content: center;
+  align-items: flex-start; /* Adjust alignment to be at the top */
+  text-align: center;
+  height: 100vh; /* Full screen height */
+  padding: 20px;
+  background-color: #f9f9f9; /* Subtle background color */
+  font-family: 'Poppins', sans-serif;
+  margin-top: 0px; /* Adds spacing from the top of the screen */
+}
+
+.welcome-box {
+  display: flex;
+  flex-direction: row; /* Inline layout for text and image */
+  justify-content: space-between;
+  align-items: center;
+  width: 90%; /* Wider box */
+  max-width: 1000px; /* Increased max-width for a larger box */
+  border-radius: 10px;
+  padding: 30px; /* Adjust padding to give more space inside */
+  background-color: white;
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+}
+
+/* Text container inside welcome box */
+.welcome-text {
+  flex: 1; /* Take up equal space as the image */
+  text-align: left;
+  padding: 20px;
+}
+
+.welcome-text h1 {
+  font-size: 60px; /* Increased title size */
+  font-weight: 750;
+  color: #3B3C36; /* Orange title color */
+  margin-bottom: 10px;
+}
+
+.welcome-text p {
+  font-size: 1.4rem; /* Slightly bigger text */
+  color: #000;
+  margin-bottom: 20px;
+}
+
+.welcome-text .btn {
+  display: inline-block;
+  padding: 12px 40px; /* Larger padding for a bigger button */
+  font-size: 18px;
+  color: white;
+  background-color: #EF9106; /* Primary orange color */
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  text-decoration: none; /* Remove underline */
+}
+
+.welcome-text .btn:hover {
+  background-color: #92C034; /* Hover effect - green */
+}
+
+/* Image container inside welcome box */
+.home-img {
+  flex: 1; /* Take up equal space as the text */
+  padding: 20px;
+  text-align: center; /* Center the image */
+}
+
+.home-img img {
+  width: 100%; /* Responsive image */
+  max-width: 350px; /* Slightly bigger max-width */
+  height: auto;
+  border-radius: 10px;
+}
+
+/* Green button style */
+.green-btn {
+  background-color: #28a745; /* Green color */
+  color: white; /* Text color */
+  border: none; /* Remove border */
+  padding: 12px 40px; /* Adjust padding */
+  font-size: 18px;
+  border-radius: 5px; /* Rounded corners */
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.green-btn:hover {
+  background-color: #218838; /* Darker green on hover */
+}
+
+/* Media Query for smaller screens (mobile view) */
+@media (max-width: 768px) {
+  .welcome-box {
+    flex-direction: column; /* Stack text and image vertically */
+    align-items: center; /* Center all content */
+    width: 95%; /* Make box width more responsive */
+    max-width: none; /* Allow box to expand fully */
+  }
+
+  .home-img {
+    margin-top: 20px; /* Adds space above image */
+  }
+
+  .welcome-text {
+    text-align: center; /* Center text for better mobile layout */
+  }
+
+  .welcome-text h1 {
+    font-size: 2rem; /* Adjust the font size for smaller screens */
+  }
+
+  .welcome-text p {
+    font-size: 1rem; /* Adjust paragraph text for mobile */
+  }
+
+  /* Make button responsive */
+  .welcome-text .btn {
+    width: 100%; /* Button takes up full width on small screens */
+    padding: 15px 0; /* Adjust padding */
+    font-size: 20px; /* Larger text on mobile */
+  }
+}
