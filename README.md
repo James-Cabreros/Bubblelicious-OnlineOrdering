@@ -1,0 +1,1 @@
+Bubblelicious-OnlineOrdering is a Customer side, Online ordering management system that helps the bussiness Bubblelicious to have a centralized system for handling orders from multiple customers and platforms
