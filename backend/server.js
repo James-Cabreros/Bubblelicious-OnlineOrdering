@@ -14,7 +14,10 @@ mongoose.connect(process.env.MONGO_URI)
   .then(() => console.log('Connected to MongoDB'))
   .catch(err => console.error('Failed to connect to MongoDB', err));
 
-// Make sure this matches the exact casing of your route file
+// Routes
+const promoImageRoutes = require('./routes/PromoImagesRoutes');
+app.use('/api/promo-images', promoImageRoutes); // Add promo images route
+
 const bestSellerRoutes = require('./routes/BestSellerRoutes');
 app.use('/api/best-sellers', bestSellerRoutes);
 
