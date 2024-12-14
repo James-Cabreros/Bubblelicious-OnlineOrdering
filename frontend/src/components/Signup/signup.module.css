@@ -1,0 +1,178 @@
+.container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 100vh;
+    background-color: #f9f9f9;
+    padding: 0 50px;
+  }
+  
+  .leftPane {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+    max-width: 500px;
+    margin-left: 80px;
+  }
+  
+  .leftPaneContent {
+    width: 100%;
+    max-width: 400px;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 150px;
+    margin-left: 0px; /* Fixed missing value */
+  }
+  
+  .leftPane h1 {
+    font-size: 2.5rem;
+    color: #000;
+    display: inline;
+    font-weight: 800;
+  }
+  
+  .leftPane p {
+    font-size: 1rem;
+    margin-bottom: 30px;
+    color: #000;
+  }
+  
+  .leftPane p a {
+    color: #000;
+    text-decoration: none;
+  }
+  
+  .leftPane p a:hover {
+    text-decoration: underline;
+  }
+  
+  .signup-form {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+  }
+  
+  .form-control {
+    padding: 10px;
+    font-size: 1rem;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+  }
+  
+  .form-control:focus {
+    outline: none;
+    border-color: #000;
+    
+  }
+  
+  .termsSection {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 0.9rem;
+    color: #666;
+  }
+  
+  .termsSection label {
+    cursor: pointer;
+  }
+  
+  .btn-primary {
+    padding: 10px;
+    font-size: 1rem;
+    color: #fff;
+    background-color: #28a745;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+  
+  .btn-primary:hover {
+    background-color: #218838;
+  }
+  
+  .rightPane {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .carouselContainer {
+    max-width: 400px; /* Adjust to desired size */
+    width: 100%;
+    padding: 20px;
+    background-color: #fff; /* Optional: Add background or styling */
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .carouselWrapper {
+    width: 100%;
+    border-radius: 10px;
+    overflow: hidden;
+  }
+  
+  .carouselImage {
+    width: 100%; /* Ensures all images are uniform */
+    height: auto; /* Maintains aspect ratio */
+    object-fit: cover; /* Ensures consistent sizing without distortion */
+  }
+  
+  /* Responsive Design */
+  @media (max-width: 768px) {
+    .container {
+      flex-direction: column;
+      height: auto;
+      padding: 20px;
+    }
+  
+    .leftPane {
+      max-width: 100%;
+      text-align: center;
+      padding: 10px;
+    }
+  
+    .leftPaneContent {
+      max-width: 100%;
+    }
+  
+    .leftPane h1 {
+      font-size: 2rem;
+    }
+  
+    .rightPane {
+      margin-top: 20px;
+    }
+  
+    .carouselContainer {
+      max-width: 300px;
+    }
+  }
+  
+  @media (max-width: 480px) {
+    .leftPane h1 {
+      font-size: 1.8rem;
+    }
+  
+    .form-control {
+      font-size: 0.9rem;
+      padding: 8px;
+    }
+  
+    .btn-primary {
+      font-size: 0.9rem;
+      padding: 8px;
+    }
+  
+    .carouselContainer {
+      max-width: 250px;
+    }
+  }
+  

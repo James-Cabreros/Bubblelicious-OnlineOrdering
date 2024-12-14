@@ -27,8 +27,13 @@
 
 .leftPane a {
   color: #000;
+  text-decoration: none;
 }
 
+.leftPane a:hover {
+  color: #000;
+  text-decoration: underline;
+}
 .login-form {
   max-width: 400px;
   width: 100%;
@@ -43,10 +48,15 @@
 
 /* Carousel wrapper inside the right pane */
 .carouselWrapper {
-  width: 50%; /* Same width as the leftPane to make it equal size */
-  height: 50%;
-  max-width: 800px; /* Optional: you can also set a max width */
-  padding: 20px;
+  max-width: 400px; /* Adjust to desired size */
+    width: 100%;
+    padding: 20px;
+    background-color: #fff; /* Optional: Add background or styling */
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 /* Carousel section */
@@ -58,23 +68,6 @@
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Optional: for styling */
 }
 
-/* Logo styles */
-.logo {
-  font-size: 2rem;
-  font-weight: bold;
-  margin-bottom: 1rem;
-  display: flex;
-  align-items: center;
-  gap: 0.2rem;
-}
-
-.logo-green {
-  color: #28a745;
-}
-
-.logo-orange {
-  color: #ff7a00;
-}
 
 /* Form title and subtitle styles */
 .form-title {
@@ -163,19 +156,15 @@
 .forgotLinks a {
   margin-right: 1rem;
   color: #000;
+  text-decoration: none;
 }
-
-/* Terms container link spacing */
-.termsContainer {
-  display: flex;
-  justify-content: space-between;
-  margin-top: 1rem;
-}
-
-.termsContainer a {
-  margin-right: 5px;
+.forgotLinks a:hover {
+  margin-right: 1rem;
   color: #000;
+  text-decoration: underline;
 }
+
+
 
 /* For smaller screens */
 @media (max-width: 768px) {
