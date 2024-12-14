@@ -22,7 +22,7 @@
     max-width: 400px;
     justify-content: center;
     align-items: center;
-    margin-bottom: 150px;
+    margin-bottom: 0px;
     margin-left: 0px; /* Fixed missing value */
   }
   
@@ -124,6 +124,26 @@
     height: auto; /* Maintains aspect ratio */
     object-fit: cover; /* Ensures consistent sizing without distortion */
   }
+
+
+  .links {
+    margin-top: 15px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+  
+  .link-secondary {
+    font-size: 0.9rem;
+    color: #007bff;
+    text-decoration: none;
+    text-align: center;
+  }
+  
+  .link-secondary:hover {
+    text-decoration: underline;
+  }
+  
   
   /* Responsive Design */
   @media (max-width: 768px) {

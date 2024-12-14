@@ -1,207 +1,221 @@
- /* General container for the login page */
 .container {
   display: flex;
   justify-content: space-between;
-  align-items: stretch; /* Ensure both panes stretch to the same height */
+  align-items: center;
   height: 100vh;
-  padding: 0 10%;
   background-color: #f9f9f9;
-  font-family: 'Arial', sans-serif;
+  padding: 0 50px;
 }
 
-/* Left section: Login form styling */
 .leftPane {
-  width: 50%;
-  margin-bottom: 150px;
-  margin-left: 80px;
-  padding: 20px; /* Add padding to the left pane */
+  flex: 1;
   display: flex;
-  flex-direction: column;
-  justify-content: center; /* Center content vertically */
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
+  max-width: 500px;
+  margin-left: 80px;
+}
+
+.leftPaneContent {
+  width: 100%;
+  max-width: 400px; /* Matches signup's max-width */
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 150px; /* Same margin as signup */
+  margin-left: 0px; /* Aligns content */
 }
 
 .leftPane h1 {
-  font-weight: 800;
   font-size: 2.5rem;
+  color: #000;
+  font-weight: 800;
 }
 
-.leftPane a {
+.leftPane p {
+  font-size: 1rem;
+  margin-bottom: 30px;
+  color: #000;
+}
+
+.leftPane p a {
   color: #000;
   text-decoration: none;
 }
 
-.leftPane a:hover {
-  color: #000;
+.leftPane p a:hover {
   text-decoration: underline;
 }
+
 .login-form {
-  max-width: 400px;
-  width: 100%;
-}
-
-.rightPane {
-  width: 50%;
   display: flex;
-  justify-content: center; /* Align to the right */
-  align-items: center; /* Center content vertically */
-}
-
-/* Carousel wrapper inside the right pane */
-.carouselWrapper {
-  max-width: 400px; /* Adjust to desired size */
-    width: 100%;
-    padding: 20px;
-    background-color: #fff; /* Optional: Add background or styling */
-    border-radius: 10px;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-
-/* Carousel section */
-.carouselImage {
-  width: 100%;
-  height: 300px; /* Set a fixed height to make the images uniform */
-  object-fit: cover; /* Ensure the image covers the area without distortion */
-  border-radius: 10px;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Optional: for styling */
-}
-
-
-/* Form title and subtitle styles */
-.form-title {
-  font-size: 1.5rem;
-  font-weight: 600;
-  margin-bottom: 1rem;
-  color: #333;
-}
-
-.form-subtitle {
-  font-size: 0.9rem;
-  margin-bottom: 2rem;
-}
-
-.form-subtitle a {
-  color: #28a745;
-  text-decoration: none;
-}
-
-.form-subtitle a:hover {
-  text-decoration: underline;
-}
-
-/* Form control styles */
-.form-label {
-  font-weight: 500;
-  color: #555;
-  margin-bottom: 0.5rem;
-  display: inline-block;
+  flex-direction: column;
+  gap: 15px;
 }
 
 .form-control {
-  width: 100%;
-  padding: 0.8rem;
+  padding: 10px;
   font-size: 1rem;
-  border: 1px solid #ddd;
+  border: 1px solid #ccc;
   border-radius: 5px;
-  margin-bottom: 1rem;
 }
 
-/* Button styles */
-.btn-primary {
-  background-color: #28a745;
-  border: none;
-  color: #fff;
-  padding: 0.8rem;
-  width: 100%;
-  border-radius: 5px;
+.form-control:focus {
+  outline: none;
+  border-color: #000;
+}
+
+.btn-primary,
+.btn-google {
+  width: 100%; /* Ensures both buttons span the full parent width */
+  padding: 10px;
   font-size: 1rem;
-  font-weight: bold;
+  border: none;
+  border-radius: 5px;
   cursor: pointer;
   transition: background-color 0.3s ease;
+}
+
+/* Primary Button Specific Styling */
+.btn-primary {
+  color: #fff;
+  background-color: #28a745;
 }
 
 .btn-primary:hover {
   background-color: #218838;
 }
 
+/* Google Button Specific Styling */
 .btn-google {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  background-color: #fff;
-  border: 1px solid #ddd;
-  padding: 0.8rem;
-  width: 100%;
-  border-radius: 5px;
-  font-size: 1rem;
-  color: #333;
-  cursor: pointer;
-  margin-top: 1rem;
-  transition: background-color 0.3s ease;
+  background-color: #4285f4; /* Google blue */
+  color: #fff;
+  margin-top: 10px;
+  border-color: #000;
 }
 
 .btn-google:hover {
-  background-color: #f5f5f5;
+  background-color: #357ae8;
 }
 
-/* Forgot links and terms container link spacing */
-.forgotLinks {
+.rightPane {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.carouselContainer {
+  max-width: 400px;
+  width: 100%;
+  padding: 20px;
+  background-color: #fff;
+  border-radius: 10px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.carouselWrapper {
+  width: 100%;
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+.carouselImage {
+  width: 100%;
+  height: auto;
+  object-fit: cover;
+}
+
+.separator {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0px;
+}
+
+.line {
+  flex: 1;
+  height: 1px;
+  background-color: #ccc;
+}
+
+.orText {
+  margin: 0px;
+  font-size: 0.9rem;
+  color: #666;
+}
+
+.links {
   display: flex;
   justify-content: space-between;
-  margin-bottom: 1rem;
+  align-items: center;
+  margin: 10px 0; /* Adjust spacing between links and input fields */
 }
 
-.forgotLinks a {
-  margin-right: 1rem;
+.links a {
+  font-size: 0.9rem;
   color: #000;
   text-decoration: none;
+  transition: color 0.3s ease;
 }
-.forgotLinks a:hover {
-  margin-right: 1rem;
+
+.links a:hover {
   color: #000;
   text-decoration: underline;
 }
 
-
-
-/* For smaller screens */
+/* Responsive Design */
 @media (max-width: 768px) {
   .container {
     flex-direction: column;
-    align-items: center;
-    padding: 2rem 5%;
+    height: auto;
+    padding: 20px;
   }
 
   .leftPane {
-    width: 100%;
-    margin-bottom: 2rem;
-    padding: 10px; /* Adjust padding for mobile view */
+    max-width: 100%;
+    text-align: center;
+    padding: 10px;
+  }
+
+  .leftPaneContent {
+    max-width: 100%;
+    margin-bottom: 50px;
+  }
+
+  .leftPane h1 {
+    font-size: 2rem;
   }
 
   .rightPane {
-    width: 100%;
-    max-width: 90%; /* Ensures carousel takes up less space on mobile */
-    padding: 10px; /* Adjust padding for mobile view */
+    margin-top: 20px;
   }
 
-  .carouselWrapper {
-    width: 90%; /* Reduce the width for smaller screens */
-    max-width: 500px;
+  .carouselContainer {
+    max-width: 300px;
+  }
+}
+
+@media (max-width: 480px) {
+  .leftPane h1 {
+    font-size: 1.8rem;
   }
 
-  .carouselImage {
-    max-width: 400px; /* Smaller images on mobile */
+  .form-control {
+    font-size: 0.9rem;
+    padding: 8px;
   }
 
-  .login-form {
-    max-width: 100%;
+  .btn-primary,
+  .btn-google {
+    font-size: 0.9rem;
+    padding: 8px;
   }
 
-  /* Reduce spacing on smaller screens */
-  .forgotLinks a,
-  .termsContainer a {
-    margin-right: 0.5rem; /* Adjust spacing for smaller screens */
+  .carouselContainer {
+    max-width: 250px;
   }
 }
