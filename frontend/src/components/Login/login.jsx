@@ -1,11 +1,14 @@
 import React, { useEffect, useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import Carousel from 'react-bootstrap/Carousel';
 import axios from 'axios';
 import styles from './login.module.css'; // Replace with the actual path to your CSS module
 
 const Login = () => {
   const [promoImages, setPromoImages] = useState([]);
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
+  const navigate = useNavigate(); // initialize useNavigate
 
   // Fetch promo images from the backend
   useEffect(() => {
@@ -21,10 +24,22 @@ const Login = () => {
     fetchPromoImages();
   }, []);
 
-  const handleFormSubmit = (e) => {
+  const handleFormSubmit = async (e) => {
     e.preventDefault();
-    // Add login form submission logic here
-    console.log('Login form submitted');
+    const data = { email, password }; // Get the email and password from state
+
+    try {
+      const response = await axios.post('http://localhost:5000/api/auth/login', data);
+      
+      if (response.data.success) {
+        // On successful login, redirect to the menu or dashboard page
+        console.log('Login successful');
+        localStorage.setItem('token', response.data.token); // Optionally store the token in local storage
+        navigate('/menu'); // Redirect to the menu page
+      }
+    } catch (err) {
+      console.error('Login failed:', err.response ? err.response.data.message : err.message);
+    }
   };
 
   const handleGoogleLogin = () => {
@@ -40,28 +55,29 @@ const Login = () => {
           <p>
             Don't Have an Account? <Link to="/signup">Sign Up</Link>
           </p>
-          <form className={styles['login-form']}>
-  <input
-    type="email"
-    placeholder="Email"
-    className={styles['form-control']}
-  />
-  <input
-    type="password"
-    placeholder="Enter Your Password"
-    className={styles['form-control']}
-  />
-
-  <div className={styles.links}>
-    <Link to="/forgot-account">Forgot Account?</Link>
-    <Link to="/forgot-password">Forgot Password?</Link>
-  </div>
-
-  <button type="submit" className={styles['btn-primary']}>
-    Log In
-  </button>
-</form>
-
+          <form className={styles['login-form']} onSubmit={handleFormSubmit}>
+            <input
+              type="email"
+              placeholder="Email"
+              className={styles['form-control']}
+              value={email} // bind email state
+              onChange={(e) => setEmail(e.target.value)} // update state on change
+            />
+            <input
+              type="password"
+              placeholder="Enter Your Password"
+              className={styles['form-control']}
+              value={password} // bind password state
+              onChange={(e) => setPassword(e.target.value)} // update state on change
+            />
+            <div className={styles.links}>
+              <Link to="/forgot-account">Forgot Account?</Link>
+              <Link to="/forgot-password">Forgot Password?</Link>
+            </div>
+            <button type="submit" className={styles['btn-primary']}>
+              Log In
+            </button>
+          </form>
 
           <div className={styles.separator}>
             <span className={styles.line}></span>

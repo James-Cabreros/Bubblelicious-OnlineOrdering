@@ -1,22 +1,16 @@
 const mongoose = require('mongoose');
 
-// Define the schema for PromoImage
 const promoImageSchema = new mongoose.Schema({
-  name: { 
-    type: String, 
-    required: true, 
-  },
-  description: { 
+  name: {
     type: String,
     required: true,
-    
   },
-  image: { 
+  image: {
     type: String,
-    required: true,
-}, });
+    required: true, // The image URL will be stored here
+  },
+});
 
-// Create the PromoImage model
 const PromoImage = mongoose.model('PromoImage', promoImageSchema);
 
 module.exports = PromoImage;

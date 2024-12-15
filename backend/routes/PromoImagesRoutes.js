@@ -11,9 +11,9 @@ router.get('/', async (req, res) => {
     
     if (promoImages.length === 0) {
       console.warn('No promo images in the collection.');
-      return res.status(404).json({ message: 'No best sellers found' }); // Send 404 if no data is found
+      return res.status(404).json({ message: 'No promo images found' }); // Corrected error message
     } else {
-      console.log(`Fetched ${promoImages.length} best-seller(s) successfully.`);
+      console.log(`Fetched ${promoImages.length} promo image(s) successfully.`); // Adjusted log message
     }
     
     res.status(200).json(promoImages);
