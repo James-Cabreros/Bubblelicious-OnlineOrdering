@@ -27,6 +27,9 @@ app.use('/api/best-sellers', bestSellerRoutes);
 const authRoutes = require('./routes/authRoutes');
 app.use('/api/auth', authRoutes);
 
+const userRoutes = require ('./routes/user');
+app.use ('/api/user', userRoutes);
+
 // Example Route
 app.get('/', (req, res) => {
   res.send('Backend is running!');
