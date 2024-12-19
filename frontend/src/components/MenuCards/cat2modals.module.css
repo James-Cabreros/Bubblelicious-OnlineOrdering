@@ -1,0 +1,159 @@
+/* Modal Container */
+.modal-container {
+    position: absolute;
+    top: var(--modal-top, 0); /* Dynamic vertical positioning */
+    left: var(--modal-left, 0); /* Dynamic horizontal positioning */
+    transform: translateX(var(--modal-translate-x, 0)); /* Adjust based on viewport edge */
+    background-color: white;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    z-index: 1000; /* Ensure the modal is above other elements */
+    width: 300px;
+    max-width: 90%; /* Ensure modal fits smaller screens */
+    transition: transform 0.3s ease;
+  }
+  
+  /* Modal Header */
+  .modal-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid #ddd;
+    padding-bottom: 10px;
+    margin-bottom: 10px;
+  }
+  
+  .modal-header h2 {
+    font-size: 1.5rem;
+    color: #333;
+    margin: 0;
+  }
+  
+  .modal-header .close-button {
+    background: none;
+    border: none;
+    font-size: 1.5rem;
+    cursor: pointer;
+    color: #333;
+  }
+  
+  /* Modal Body */
+  .modal-body {
+    font-size: 1rem;
+    color: #555;
+  }
+  
+  .modal-body img {
+    width: 100%;
+    height: auto;
+    border-radius: 8px;
+    margin-bottom: 10px;
+  }
+  
+  .price-close-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 10px;
+  }
+  
+  .price-close-container p {
+    margin: 0;
+  }
+  
+  .price-close-container .close-button {
+    background-color: #28a745;
+    color: white;
+    border: none;
+    padding: 8px 15px;
+    font-size: 0.9rem;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+  
+  .price-close-container .close-button:hover {
+    background-color: #218838;
+  }
+/* Modal Container */
+.modal-container {
+    position: absolute;
+    top: var(--modal-top, 0); /* Dynamic vertical positioning */
+    left: var(--modal-left, 0); /* Dynamic horizontal positioning */
+    transform: translateX(var(--modal-translate-x, 0)); /* Adjust based on viewport edge */
+    background-color: white;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    z-index: 1000; /* Ensure the modal is above other elements */
+    width: 300px;
+    max-width: 90%; /* Ensure modal fits smaller screens */
+    transition: transform 0.3s ease;
+  }
+  
+  /* Modal Header */
+  .modal-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid #ddd;
+    padding-bottom: 10px;
+    margin-bottom: 10px;
+  }
+  
+  .modal-header h2 {
+    font-size: 1.5rem;
+    color: #333;
+    margin: 0;
+  }
+  
+  .modal-header .close-button {
+    background: none;
+    border: none;
+    font-size: 1.5rem;
+    cursor: pointer;
+    color: #333;
+  }
+  
+  /* Modal Body */
+  .modal-body {
+    font-size: 1rem;
+    color: #555;
+  }
+  
+  .modal-body img {
+    width: 100%;
+    height: auto;
+    border-radius: 8px;
+    margin-bottom: 10px;
+  }
+  
+  .price-close-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 10px;
+  }
+  
+  .price-close-container p {
+    margin: 0;
+  }
+  
+  .price-close-container .close-button {
+    background-color: #28a745;
+    color: white;
+    border: none;
+    padding: 8px 15px;
+    font-size: 0.9rem;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+  
+  .price-close-container .close-button:hover {
+    background-color: #218838;
+  }
+    

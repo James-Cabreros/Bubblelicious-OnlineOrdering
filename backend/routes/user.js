@@ -1,71 +1,41 @@
 const express = require('express');
 const bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken');
-const User = require('../models/user1'); // Adjust the path if needed
+const User = require('../models/user1'); // Updated user model
 
 const router = express.Router();
 
-// Login route - generates and returns a JWT token
-router.post('/login', async (req, res) => {
-  const { email, password } = req.body;
+// Google Login route
+router.post('/google-login', async (req, res) => {
+  const { username, email, contactNumber, googleId } = req.body;
 
   try {
-    const user = await User.findOne({ email });
+    // Check if the user already exists
+    let user = await User.findOne({ email });
+
     if (!user) {
-      return res.status(400).json({ message: 'Invalid credentials' });
+      // If user does not exist, create a new user
+      user = new User({
+        username,
+        email,
+        contactNumber: contactNumber || '', // Use empty string if contactNumber is not provided
+        password: '', // Leave password empty for Google users
+        googleId, // Add Google UID to the user model
+      });
+      await user.save();
     }
 
-    // Compare provided password with the stored hashed password
-    const isMatch = await user.comparePassword(password);
-    if (!isMatch) {
-      return res.status(400).json({ message: 'Invalid credentials' });
-    }
-
-    // Generate JWT token
+    // Generate a JWT token
     const token = jwt.sign(
       { userId: user._id, username: user.username },
-      process.env.JWT_SECRET,  // Store your JWT secret in an environment variable
-      { expiresIn: '1h' }  // Token expiration (e.g., 1 hour)
+      process.env.JWT_SECRET, // Store JWT secret in an environment variable
+      { expiresIn: '7h' } // Token expiration (1 hour)
     );
 
-    res.json({ token });  // Send the token to the client
+    res.status(200).json({ success: true, token, message: 'User logged in successfully' });
   } catch (error) {
-    console.error('Login error:', error);
-    res.status(500).json({ message: 'Server error' });
-  }
-});
-
-// Middleware to authenticate the user via JWT
-const authenticate = (req, res, next) => {
-  const token = req.headers['authorization']?.split(' ')[1];  // Extract token from 'Bearer token'
-
-  if (!token) {
-    return res.status(401).json({ message: 'No token provided' });
-  }
-
-  try {
-    // Verify the token
-    const decoded = jwt.verify(token, process.env.JWT_SECRET);
-    req.userId = decoded.userId;  // Attach user data to the request
-    next();  // Proceed to the next middleware or route handler
-  } catch (error) {
-    console.error('Authentication error:', error);
-    return res.status(403).json({ message: 'Invalid or expired token' });
-  }
-};
-
-// Protected route to get user details
-router.get('/me', authenticate, async (req, res) => {
-  try {
-    const user = await User.findById(req.userId);
-    if (!user) {
-      return res.status(404).json({ message: 'User not found' });
-    }
-
-    res.json({ username: user.username });  // Return the username
-  } catch (error) {
-    console.error('Error fetching user:', error);
-    res.status(500).json({ message: 'Server error' });
+    console.error('Error saving Google user:', error);
+    res.status(500).json({ success: false, message: 'Server error' });
   }
 });
 

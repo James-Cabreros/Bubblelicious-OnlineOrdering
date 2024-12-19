@@ -1,3 +1,4 @@
+/* General Container */
 .container {
   display: flex;
   justify-content: space-between;
@@ -7,34 +8,31 @@
   padding: 0 50px;
 }
 
+/* Left Pane */
 .leftPane {
-  flex: 1;
+  flex: 1; /* Takes 50% of the width */
   display: flex;
-  justify-content: center;
-  align-items: center;
+  justify-content: center; /* Center horizontally */
+  align-items: center; /* Center vertically */
   padding: 20px;
-  max-width: 500px;
-  margin-left: 80px;
 }
 
 .leftPaneContent {
   width: 100%;
-  max-width: 400px; /* Matches signup's max-width */
-  justify-content: center;
-  align-items: center;
-  margin-bottom: 150px; /* Same margin as signup */
-  margin-left: 0px; /* Aligns content */
+  max-width: 400px; /* Limit the maximum width of the content */
+  text-align: left; /* Center-align text and content */
 }
 
 .leftPane h1 {
   font-size: 2.5rem;
   color: #000;
-  font-weight: 800;
+  font-weight: bold;
+  margin-bottom: 20px;
 }
 
 .leftPane p {
   font-size: 1rem;
-  margin-bottom: 30px;
+  margin-bottom: 20px;
   color: #000;
 }
 
@@ -47,14 +45,16 @@
   text-decoration: underline;
 }
 
+/* Form Styles */
 .login-form {
   display: flex;
   flex-direction: column;
   gap: 15px;
+  margin-bottom: 20px;
 }
 
 .form-control {
-  padding: 10px;
+  padding: 12px;
   font-size: 1rem;
   border: 1px solid #ccc;
   border-radius: 5px;
@@ -65,44 +65,115 @@
   border-color: #000;
 }
 
+/* Button Shared Styles */
 .btn-primary,
 .btn-google {
-  width: 100%; /* Ensures both buttons span the full parent width */
-  padding: 10px;
+  width: 100%; /* Make the button take full width of the parent container */
+  padding: 12px;
   font-size: 1rem;
   border: none;
   border-radius: 5px;
   cursor: pointer;
-  transition: background-color 0.3s ease;
+  transition: background-color 0.3s ease, box-shadow 0.3s ease;
 }
 
-/* Primary Button Specific Styling */
+/* Log In Button */
 .btn-primary {
-  color: #fff;
   background-color: #28a745;
+  color: white;
 }
 
 .btn-primary:hover {
   background-color: #218838;
 }
 
-/* Google Button Specific Styling */
+/* Google Button */
 .btn-google {
-  background-color: #4285f4; /* Google blue */
-  color: #fff;
-  margin-top: 10px;
-  border-color: #000;
+  display: flex;
+  align-items: center; /* Center align icon and text */
+  justify-content: center; /* Center align icon and text */
+  background-color: #fff; /* White background */
+  color: #000; /* Black text */
+  border: 1px solid #ccc; /* Border to match design */
+  margin-top: 10px; /* Add space above the Google button */
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Add a subtle shadow */
 }
 
 .btn-google:hover {
-  background-color: #357ae8;
+  background-color: #f5f5f5; /* Slight gray hover background */
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.15); /* Slightly deeper shadow on hover */
 }
 
+/* Google Icon Styling */
+.google-icon {
+  width: 20px;
+  height: 20px;
+  margin-right: 10px; /* Space between icon and text */
+}
+
+
+/* Separator */
+.separator {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 20px 0;
+}
+
+.links {
+  display: flex;
+  justify-content: space-between; /* Add space between links */
+  align-items: center; /* Align items vertically */
+  gap: 20px; /* Add consistent space between links */
+  margin-top: 10px; /* Add some spacing from the input fields above */
+  text-decoration: none;
+}
+
+link :hover{
+  text-decoration: underline;
+}
+/* For smaller screens */
+@media (max-width: 768px) {
+  .links {
+    flex-direction: column; /* Stack links vertically */
+    align-items: flex-start; /* Align links to the left */
+    gap: 10px; /* Reduce the gap between links */
+  }
+}
+
+
+/* Styling the links */
+.links a {
+  color: #000; /* Default color for the links (blue) */
+  text-decoration: none; /* Remove underline by default */
+  font-size: 0.9rem; /* Adjust font size if needed */
+  transition: color 0.3s ease, text-decoration 0.3s ease; /* Smooth transition for hover effects */
+}
+
+/* Hover Effect for the Links */
+.links a:hover {
+  color: #000; /* Darker blue on hover */
+  text-decoration: underline; /* Add underline on hover */
+}
+.line {
+  flex: 1;
+  height: 1px;
+  background-color: #ccc;
+}
+
+.orText {
+  margin: 0 10px;
+  font-size: 0.9rem;
+  color: #666;
+}
+
+/* Right Pane */
 .rightPane {
   flex: 1;
   display: flex;
   justify-content: center;
   align-items: center;
+  padding: 20px;
 }
 
 .carouselContainer {
@@ -112,82 +183,27 @@
   background-color: #fff;
   border-radius: 10px;
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
-.carouselWrapper {
-  width: 100%;
-  border-radius: 10px;
-  overflow: hidden;
 }
 
 .carouselImage {
   width: 100%;
   height: auto;
   object-fit: cover;
-}
-
-.separator {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  margin: 0px;
-}
-
-.line {
-  flex: 1;
-  height: 1px;
-  background-color: #ccc;
-}
-
-.orText {
-  margin: 0px;
-  font-size: 0.9rem;
-  color: #666;
-}
-
-.links {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  margin: 10px 0; /* Adjust spacing between links and input fields */
-}
-
-.links a {
-  font-size: 0.9rem;
-  color: #000;
-  text-decoration: none;
-  transition: color 0.3s ease;
-}
-
-.links a:hover {
-  color: #000;
-  text-decoration: underline;
+  border-radius: 10px;
 }
 
 /* Responsive Design */
 @media (max-width: 768px) {
   .container {
     flex-direction: column;
-    height: auto;
     padding: 20px;
+    height: auto;
   }
 
   .leftPane {
     max-width: 100%;
     text-align: center;
-    padding: 10px;
-  }
-
-  .leftPaneContent {
-    max-width: 100%;
-    margin-bottom: 50px;
-  }
-
-  .leftPane h1 {
-    font-size: 2rem;
+    margin-bottom: 20px;
   }
 
   .rightPane {
@@ -206,13 +222,13 @@
 
   .form-control {
     font-size: 0.9rem;
-    padding: 8px;
+    padding: 10px;
   }
 
   .btn-primary,
   .btn-google {
     font-size: 0.9rem;
-    padding: 8px;
+    padding: 10px;
   }
 
   .carouselContainer {

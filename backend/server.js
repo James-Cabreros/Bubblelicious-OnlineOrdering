@@ -13,35 +13,41 @@ app.use(cors()); // Allow cross-origin requests
 
 // Connect to MongoDB
 mongoose
-  .connect(process.env.MONGO_URI)
+  .connect(process.env.MONGO_URI, { useNewUrlParser: true, useUnifiedTopology: true })
   .then(() => console.log('Connected to MongoDB'))
-  .catch(err => console.error('Failed to connect to MongoDB:', err));
+  .catch((err) => console.error('Failed to connect to MongoDB:', err));
 
 // Routes
 const promoImageRoutes = require('./routes/PromoImagesRoutes');
 app.use('/api/promo-images', promoImageRoutes);
 
-const bestSellerRoutes = require('./routes/BestSellerRoutes');
+const bestSellerRoutes = require('./routes/bestSellerRoutes');
 app.use('/api/best-sellers', bestSellerRoutes);
 
 const authRoutes = require('./routes/authRoutes');
 app.use('/api/auth', authRoutes);
 
-const userRoutes = require ('./routes/user');
-app.use ('/api/user', userRoutes);
+const userRoutes = require('./routes/user'); // Updated user route
+app.use('/api/user', userRoutes);
+
+const menuRoutes = require('./routes/menuRoutes');
+app.use('/api/menu-items', menuRoutes);
+
+const ordersRoutes = require('./routes/ordersRoutes');
+app.use('/api/orders', ordersRoutes);
 
 // Example Route
 app.get('/', (req, res) => {
   res.send('Backend is running!');
 });
 
-// Error Handling Middleware (Optional)
+// Error Handling Middleware
 app.use((err, req, res, next) => {
   console.error(err.stack); // Logs the error
   if (err.name === 'ValidationError') {
     return res.status(400).json({
       message: 'Validation error',
-      errors: err.errors, // Sends back the validation errors
+      errors: err.errors,
     });
   }
   res.status(500).json({ message: 'Server error, something went wrong.' });

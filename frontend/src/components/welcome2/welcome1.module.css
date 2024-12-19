@@ -1,0 +1,106 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600&display=swap');
+
+.welcome-container {
+  display: flex;
+  justify-content: center;
+  align-items: flex-start; /* Adjust alignment to be at the top */
+  text-align: center;
+  min-height: 70vh; /* Minimum height to ensure space for content */
+  padding: 20px;
+  background-color: #f9f9f9;
+  font-family: 'Poppins', sans-serif;
+  margin-top: 0px;
+}
+
+.welcome-box {
+  display: flex;
+  flex-direction: row; /* Inline layout for text and image */
+  justify-content: space-between;
+  align-items: center;
+  width: 90%; /* Wider box */
+  max-width: 1200px;
+  border-radius: 10px;
+  padding: 30px;
+  background-color: white;
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.welcome-text {
+  flex: 1;
+  text-align: left;
+  padding: 20px;
+}
+
+.welcome-text h1 {
+  font-size: 80px;
+  font-weight: 750;
+  color: #3B3C36;
+  margin-bottom: 10px;
+  text-align: left;
+}
+
+.welcome-text p {
+  font-size: 1.4rem;
+  color: #000;
+  margin-bottom: 20px;
+}
+
+.welcome-text .green-btn {
+  display: inline-block;
+  padding: 12px 40px;
+  font-size: 18px;
+  color: white;
+  background-color: #28a745; /* Green color */
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.welcome-text .green-btn:hover {
+  background-color: #218838; /* Darker green on hover */
+}
+
+.home-img {
+  flex: 1;
+  padding: 20px;
+  text-align: center;
+}
+
+.home-img img {
+  width: 100%;
+  max-width: 350px;
+  height: auto;
+  border-radius: 10px;
+}
+
+/* Media Query for smaller screens (mobile view) */
+@media (max-width: 768px) {
+  .welcome-container {
+    min-height: auto; 
+    padding-bottom: 20px; 
+  }
+
+  .welcome-box {
+    flex-direction: column;
+    align-items: center;
+    width: 95%;
+    max-width: none;
+  }
+
+  .home-img {
+    margin-top: 20px;
+  }
+
+  .welcome-text {
+    text-align: center;
+  }
+
+  .welcome-text h1 {
+    font-size: 2rem;
+  }
+
+  .welcome-text p {
+    font-size: 1rem;
+  }
+}

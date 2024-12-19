@@ -1,0 +1,75 @@
+/* Carousel Container */
+.carouselContainer {
+  position: relative;
+}
+
+/* Align cards in the same row */
+.carouselRow {
+  display: flex;
+  justify-content: center;
+  gap: 20px; /* Increased gap for spacing */
+  margin: 0; /* Remove default margins */
+}
+
+/* Card Styling */
+.card {
+  width: 300px; /* Wider card width */
+  border: none;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease-in-out;
+}
+
+.card:hover {
+  transform: scale(1.05); /* Zoom effect on hover */
+}
+
+.cardImage {
+  height: 150px; /* Maintain proportional image height */
+  object-fit: cover;
+}
+
+/* Carousel Controls */
+.carouselControl {
+  width: 5%;
+  z-index: 2;
+}
+
+.carousel-control-prev-icon,
+.carousel-control-next-icon {
+  background-color: rgba(0, 0, 0, 0.5); /* Semi-transparent background */
+  border-radius: 50%; /* Make controls circular */
+  padding: 10px;
+}
+
+.carousel-control-prev {
+  left: -30px;
+}
+
+.carousel-control-next {
+  right: -30px;
+}
+
+/* Adjust arrows to use Bootstrap icons */
+.carousel-control-prev-icon::before,
+.carousel-control-next-icon::before {
+  font-family: "Bootstrap-icons";
+  font-size: 1.5rem;
+  color: #fff;
+}
+
+/* Responsive Adjustments */
+@media (max-width: 992px) {
+  .card {
+    width: 250px; /* Adjust card width for medium screens */
+  }
+}
+
+@media (max-width: 768px) {
+  .carouselControl {
+    width: 10%;
+  }
+
+  .card {
+    width: 100%; /* Full width on smaller screens */
+  }
+}
