@@ -176,6 +176,29 @@ link :hover{
   padding: 20px;
 }
 
+
+/* Styling for Link Buttons */
+.links button {
+  background-color: #fff; /* White background */
+  color: #000; /* Black text */
+  border: 1px solid #fff; /* Subtle border */
+  border-radius: 5px; /* Rounded corners */
+  padding: 10px 20px; /* Adjust padding */
+  cursor: pointer;
+  transition: all 0.3s ease; /* Smooth transition for hover and focus */
+  text-decoration: none;
+}
+
+.links button:hover {
+  
+  color: #000; /* White text on hover */
+  border: none; /* Remove border on hover */
+  text-decoration: underline;
+}
+
+
+
+
 .carouselContainer {
   max-width: 400px;
   width: 100%;
@@ -191,6 +214,54 @@ link :hover{
   object-fit: cover;
   border-radius: 10px;
 }
+
+.modalOverlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5); /* Semi-transparent background */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+
+.modalContent {
+  background-color: white;
+  padding: 20px 30px;
+  border-radius: 10px;
+  text-align: center;
+  max-width: 400px;
+  width: 90%;
+}
+
+.modalContent h2 {
+  margin-bottom: 15px;
+  font-size: 1.5rem;
+}
+
+.modalContent p {
+  font-size: 1rem;
+  margin-bottom: 20px;
+}
+
+.modalButtons {
+  display: flex;
+  justify-content: space-between;
+  gap: 10px;
+}
+
+.btn-secondary {
+  
+  border: none;
+  border-radius: 5px;
+  padding: 10px 15px;
+  cursor: pointer;
+}
+
+
 
 /* Responsive Design */
 @media (max-width: 768px) {
@@ -234,4 +305,7 @@ link :hover{
   .carouselContainer {
     max-width: 250px;
   }
+
+
+  
 }

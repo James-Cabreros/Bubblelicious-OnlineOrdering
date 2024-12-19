@@ -1,25 +1,28 @@
-import React, { useEffect, useState } from 'react';
-import { Link, useNavigate } from 'react-router-dom';
-import Carousel from 'react-bootstrap/Carousel';
-import axios from 'axios';
-import { signInWithPopup } from 'firebase/auth';
-import { auth, provider } from '../../firebaseconfig';
-import styles from './login.module.css';
-import googleIcon from '../../assets/google.png';
+import React, { useEffect, useState } from "react";
+import { Link, useNavigate } from "react-router-dom";
+import Carousel from "react-bootstrap/Carousel";
+import axios from "axios";
+import { signInWithPopup } from "firebase/auth";
+import { auth, provider } from "../../firebaseconfig";
+import ForgotModal from "./ForgotModal";
+import styles from "./login.module.css";
+import googleIcon from "../../assets/google.png";
 
 const Login = () => {
   const [promoImages, setPromoImages] = useState([]);
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [isModalOpen, setIsModalOpen] = useState(false); // Modal visibility
+  const [modalType, setModalType] = useState(""); // Type of modal (account/password)
   const navigate = useNavigate();
 
   useEffect(() => {
     const fetchPromoImages = async () => {
       try {
-        const response = await axios.get('/api/promo-images');
+        const response = await axios.get("/api/promo-images");
         setPromoImages(response.data);
       } catch (err) {
-        console.error('Failed to fetch promo images:', err);
+        console.error("Failed to fetch promo images:", err);
       }
     };
 
@@ -31,13 +34,13 @@ const Login = () => {
     const data = { email, password };
 
     try {
-      const response = await axios.post('/api/auth/login', data);
+      const response = await axios.post("/api/auth/login", data);
       if (response.data.success) {
-        localStorage.setItem('token', response.data.token);
-        navigate('/menu');
+        localStorage.setItem("token", response.data.token);
+        navigate("/menu");
       }
     } catch (err) {
-      console.error('Login failed:', err.message);
+      console.error("Login failed:", err.message);
     }
   };
 
@@ -48,18 +51,23 @@ const Login = () => {
       const userData = {
         username: user.displayName,
         email: user.email,
-        contactNumber: user.phoneNumber || '',
+        contactNumber: user.phoneNumber || "",
         googleId: user.uid,
       };
 
-      const response = await axios.post('/api/user/google-login', userData);
+      const response = await axios.post("/api/user/google-login", userData);
       if (response.data.success) {
-        localStorage.setItem('token', response.data.token);
-        navigate('/menu');
+        localStorage.setItem("token", response.data.token);
+        navigate("/menu");
       }
     } catch (error) {
-      console.error('Google Sign-In error:', error.message);
+      console.error("Google Sign-In error:", error.message);
     }
+  };
+
+  const openModal = (type) => {
+    setModalType(type);
+    setIsModalOpen(true);
   };
 
   return (
@@ -71,26 +79,38 @@ const Login = () => {
           <p>
             Don’t Have an Account? <Link to="/signup">Sign Up</Link>
           </p>
-          <form className={styles['login-form']} onSubmit={handleFormSubmit}>
+          <form className={styles["login-form"]} onSubmit={handleFormSubmit}>
             <input
               type="email"
               placeholder="Email"
-              className={styles['form-control']}
+              className={styles["form-control"]}
               value={email}
               onChange={(e) => setEmail(e.target.value)}
             />
             <input
               type="password"
               placeholder="Enter Your Password"
-              className={styles['form-control']}
+              className={styles["form-control"]}
               value={password}
               onChange={(e) => setPassword(e.target.value)}
             />
             <div className={styles.links}>
-              <Link to="/forgot-account">Forgot Account?</Link>
-              <Link to="/forgot-password">Forgot Password?</Link>
+              <button
+                type="button"
+                className={styles.linkButton}
+                onClick={() => openModal("account")}
+              >
+                Forgot Account?
+              </button>
+              <button
+                type="button"
+                className={styles.linkButton}
+                onClick={() => openModal("password")}
+              >
+                Forgot Password?
+              </button>
             </div>
-            <button type="submit" className={styles['btn-primary']}>
+            <button type="submit" className={styles["btn-primary"]}>
               Log In
             </button>
           </form>
@@ -99,11 +119,11 @@ const Login = () => {
             <span className={styles.orText}>Or</span>
             <span className={styles.line}></span>
           </div>
-          <button className={styles['btn-google']} onClick={handleGoogleLogin}>
+          <button className={styles["btn-google"]} onClick={handleGoogleLogin}>
             <img
               src={googleIcon}
               alt="Google Icon"
-              className={styles['google-icon']}
+              className={styles["google-icon"]}
             />
             Login with Google
           </button>
@@ -130,6 +150,13 @@ const Login = () => {
           )}
         </div>
       </div>
+
+      {/* Forgot Modal */}
+      <ForgotModal
+        isOpen={isModalOpen}
+        onClose={() => setIsModalOpen(false)}
+        modalType={modalType}
+      />
     </div>
   );
 };

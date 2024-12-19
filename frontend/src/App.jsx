@@ -20,6 +20,7 @@ function App() {
         <Route path='/Menu' element={<Menu />} />
         <Route path='/Account' element={<Account />} />
         <Route path='/placeorder' element={<PlaceOrder />} />
+        
       </Routes>
     </div>
   );

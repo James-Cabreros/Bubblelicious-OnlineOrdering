@@ -36,6 +36,10 @@ app.use('/api/menu-items', menuRoutes);
 const ordersRoutes = require('./routes/ordersRoutes');
 app.use('/api/orders', ordersRoutes);
 
+const otpRoutes = require('./routes/otpRoutes'); // Add this line
+app.use('/api/otp', otpRoutes); // Register the OTP routes
+
+
 // Example Route
 app.get('/', (req, res) => {
   res.send('Backend is running!');

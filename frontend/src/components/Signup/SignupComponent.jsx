@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import Carousel from 'react-bootstrap/Carousel';
 import axios from 'axios';
+import { Modal, Button } from 'react-bootstrap';
 import styles from '../Signup/signup.module.css';
 
 const Signup = () => {
@@ -14,9 +15,10 @@ const Signup = () => {
     confirmPassword: '',
     termsAccepted: false,
   });
-
   const [errors, setErrors] = useState({});
-  const navigate = useNavigate(); // initialize useNavigate
+  const [showTermsModal, setShowTermsModal] = useState(false);
+  const [termsAndConditions, setTermsAndConditions] = useState('');
+  const navigate = useNavigate();
 
   useEffect(() => {
     const fetchPromoImages = async () => {
@@ -31,6 +33,19 @@ const Signup = () => {
     fetchPromoImages();
   }, []);
 
+  useEffect(() => {
+    const fetchTermsAndConditions = async () => {
+      try {
+        const response = await axios.get('http://localhost:5000/api/terms');
+        setTermsAndConditions(response.data);
+      } catch (err) {
+        console.error('Failed to fetch terms and conditions:', err);
+      }
+    };
+
+    fetchTermsAndConditions();
+  }, []);
+
   const handleInputChange = (e) => {
     const { name, value, type, checked } = e.target;
     setFormData((prevData) => ({
@@ -42,28 +57,24 @@ const Signup = () => {
   const validate = () => {
     const newErrors = {};
 
-    // Username: Required and only letters
     if (!formData.username.trim()) {
       newErrors.username = 'Username is required.';
     } else if (!/^[A-Za-z]+$/.test(formData.username)) {
       newErrors.username = 'Username must only contain letters.';
     }
 
-    // Email: Required and valid format
     if (!formData.email.trim()) {
       newErrors.email = 'Email is required.';
     } else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(formData.email)) {
       newErrors.email = 'Invalid email format.';
     }
 
-    // Contact Number: Must start with "09" and be 11 digits long
     if (!formData.contactNumber.trim()) {
       newErrors.contactNumber = 'Contact number is required.';
     } else if (!/^09\d{9}$/.test(formData.contactNumber)) {
       newErrors.contactNumber = 'Contact number must start with "09" and be exactly 11 digits long.';
     }
 
-    // Password: Required, at least 8 characters, uppercase, lowercase, number, special character
     if (!formData.password.trim()) {
       newErrors.password = 'Password is required.';
     } else if (
@@ -73,19 +84,15 @@ const Signup = () => {
         'Password must be at least 8 characters and include uppercase, lowercase, number, and special character.';
     }
 
-    // Confirm Password: Must match Password
     if (formData.password !== formData.confirmPassword) {
       newErrors.confirmPassword = 'Passwords do not match.';
     }
 
-    // Terms and Conditions
     if (!formData.termsAccepted) {
       newErrors.termsAccepted = 'You must accept the terms and conditions.';
     }
 
     setErrors(newErrors);
-
-    // Return true if no errors
     return Object.keys(newErrors).length === 0;
   };
 
@@ -96,7 +103,6 @@ const Signup = () => {
       try {
         const response = await axios.post('http://localhost:5000/api/auth/signup', formData);
         alert('Signup successful!');
-        console.log('Response:', response.data);
         navigate('/menu');
       } catch (error) {
         if (error.response && error.response.data && error.response.data.errors) {
@@ -181,7 +187,15 @@ const Signup = () => {
                 checked={formData.termsAccepted}
                 onChange={handleInputChange}
               />
-              <label htmlFor="terms">I agree to the terms and conditions</label>
+              <label htmlFor="terms">
+                I agree to the{' '}
+                <span
+                  style={{ color: 'blue', cursor: 'pointer', textDecoration: 'underline' }}
+                  onClick={() => setShowTermsModal(true)}
+                >
+                  terms and conditions
+                </span>
+              </label>
               {errors.termsAccepted && (
                 <p className={styles.error}>{errors.termsAccepted}</p>
               )}
@@ -192,23 +206,55 @@ const Signup = () => {
           </form>
         </div>
       </div>
+
       <div className={styles.rightPane}>
         <div className={styles.carouselContainer}>
-          <div className={styles.carouselWrapper}>
-            <Carousel slide={false}>
-              {promoImages.map((promo) => (
-                <Carousel.Item key={promo._id}>
-                  <img
-                    className={styles.carouselImage}
-                    src={promo.image}
-                    alt={promo.name}
-                  />
-                </Carousel.Item>
-              ))}
-            </Carousel>
-          </div>
+          <Carousel slide={false}>
+            {promoImages.map((promo) => (
+              <Carousel.Item key={promo._id}>
+                <img
+                  className={styles.carouselImage}
+                  src={promo.image}
+                  alt={promo.name}
+                />
+              </Carousel.Item>
+            ))}
+          </Carousel>
         </div>
       </div>
+
+      {/* Terms and Conditions Modal */}
+      <Modal show={showTermsModal} onHide={() => setShowTermsModal(false)} centered>
+        <Modal.Header closeButton>
+          <Modal.Title>Terms and Conditions</Modal.Title>
+        </Modal.Header>
+        <Modal.Body>
+          {termsAndConditions ? (
+            termsAndConditions.sections.map((section, index) => (
+              <div key={index}>
+                <h5>{section.heading}</h5>
+                <p>{section.content}</p>
+              </div>
+            ))
+          ) : (
+            <p>Loading terms and conditions...</p>
+          )}
+        </Modal.Body>
+        <Modal.Footer>
+          <Button variant="secondary" onClick={() => setShowTermsModal(false)}>
+            Cancel
+          </Button>
+          <Button
+            variant="success"
+            onClick={() => {
+              setFormData((prevData) => ({ ...prevData, termsAccepted: true }));
+              setShowTermsModal(false);
+            }}
+          >
+            Accept
+          </Button>
+        </Modal.Footer>
+      </Modal>
     </div>
   );
 };
